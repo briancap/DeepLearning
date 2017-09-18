@@ -1,0 +1,8 @@
+Gradient Decent w/Sigmoid
+
+dot product = Sum()
+output 		= activation_function(Dot Product)
+error 		= (y - output)
+error_term 	= (error) x (output) x (1 - output)
+w_step 		= (error_term) x (feature)
+new_w 		= old_w + ( (w_step)(Leanrate) / (num_features) )

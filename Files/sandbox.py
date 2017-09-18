@@ -6,8 +6,8 @@ df = pd.DataFrame(np.random.randn(8, 4), columns=['A', 'B', 'C', 'D'])
 def plus_one(x):
 	return x*5
 
-print df[:1]
-print plus_one(df[:1])
+#print df.loc[:, 'C']
+print(df[:-2])
 
 '''
 1) sigmoid

@@ -38,7 +38,6 @@ test_features, test_targets = test_data.drop(target_fields, axis=1), test_data[t
 train_features, train_targets = features[:-60*24], targets[:-60*24]
 val_features, val_targets = features[-60*24:], targets[-60*24:]
 
-#print(val_targets.shape)
 
 class NeuralNetwork(object):
     def __init__(self, input_nodes, hidden_nodes, output_nodes, learning_rate):
@@ -87,8 +86,8 @@ class NeuralNetwork(object):
             #### Implement the forward pass here ####
             ### Forward pass ###
             # TODO: Hidden layer - Replace these values with your calculations.
-            hidden_inputs = None # signals into hidden layer
-            hidden_outputs = None # signals from hidden layer
+            hidden_inputs = np.dot(features, self.weights_input_to_hidden) # signals into hidden layer
+            hidden_outputs = self.activation_function(hidden_inputs) # signals from hidden layer
 
             # TODO: Output layer - Replace these values with your calculations.
             final_inputs = None # signals into final output layer
@@ -136,3 +135,17 @@ class NeuralNetwork(object):
         final_outputs = None # signals from final output layer 
         
         return final_outputs
+        
+cnt_neural_net = NeuralNetwork(train_features.shape[0], train_features.shape[0]/100, 1, .1)
+cnt_neural_net.train(train_features, train_targets.loc[:, 'cnt'])
+
+#print(cnt_neural_net.weights_input_to_hidden.shape)
+#print(train_features.shape)
+#print(train_targets.shape)
+#print(train_targets.shape)
+
+
+
+
+
+
