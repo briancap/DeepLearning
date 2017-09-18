@@ -38,6 +38,7 @@ test_features, test_targets = test_data.drop(target_fields, axis=1), test_data[t
 train_features, train_targets = features[:-60*24], targets[:-60*24]
 val_features, val_targets = features[-60*24:], targets[-60*24:]
 
+#print(val_targets.shape)
 
 class NeuralNetwork(object):
     def __init__(self, input_nodes, hidden_nodes, output_nodes, learning_rate):
