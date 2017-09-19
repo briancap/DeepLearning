@@ -125,30 +125,25 @@ class NeuralNetwork(object):
             ---------
             features: 1D array of feature values
         '''
-        
+
         #### Implement the forward pass here ####
         # TODO: Hidden layer - replace these values with the appropriate calculations.
-        hidden_inputs = np.dot(self.activation_function(features), self.weights_input_to_hidden) # signals into hidden layer
-        hidden_outputs = None # signals from hidden layer
-        
+        hidden_inputs = np.dot(features, self.weights_input_to_hidden) # signals into hidden layer
+        hidden_outputs = self.activation_function(hidden_inputs) # signals from hidden layer
+
         # TODO: Output layer - Replace these values with the appropriate calculations.
-        final_inputs = None # signals into final output layer
-        final_outputs = None # signals from final output layer 
+        final_inputs = hidden_outputs # signals into final output layer
+        final_outputs = np.dot(hidden_outputs, self.weights_hidden_to_output) # signals from final output layer 
         
         return final_outputs
-        
+'''      
 cnt_neural_net = NeuralNetwork(train_features.shape[1], 30, 1, .1)
 batch = np.random.choice(train_features.index, size=128)
 #cnt_neural_net.train(train_features.ix[batch].values, train_targets.ix[batch]['cnt'])
-cnt_neural_net.run(tain_features)
+cnt_neural_net.run(train_features)
 
 #print(cnt_neural_net.weights_input_to_hidden.shape)
 #print(train_features.shape[1])
 #print(train_targets.shape)
 #print(train_targets.shape)
-
-
-
-
-
-
+'''
